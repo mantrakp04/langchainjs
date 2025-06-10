@@ -2269,6 +2269,25 @@ export class ChatOpenAI<
     } else {
       additional_kwargs = {};
     }
+
+    // Check for reasoning content in delta
+    for (const reasoningKeyword of [
+      "reasoning_content",
+      "reasoning",
+      "reasoning_block",
+      "thinking_content",
+      "think",
+      "thinking",
+      "thinking_block",
+      "think_content",
+    ]) {
+      const reasoningContent = delta[reasoningKeyword];
+      if (reasoningContent !== undefined) {
+        additional_kwargs.reasoning_content = reasoningContent;
+        break;
+      }
+    }
+
     if (this.__includeRawResponse) {
       additional_kwargs.__raw_response = rawResponse;
     }
