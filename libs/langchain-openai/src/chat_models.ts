@@ -36,6 +36,7 @@ import {
   type ChatResult,
 } from "@langchain/core/outputs";
 import { getEnvironmentVariable } from "@langchain/core/utils/env";
+import { isZodSchema } from "@langchain/core/utils/types";
 import {
   BaseChatModel,
   type BindToolsInput,
